@@ -17,13 +17,13 @@
       "suggested_key": {
         "default": "Alt+Q"
       },
-      "description": "快速切换访问的标签页"
+      "description": "后退"
     },
     "navigate-tab-history": {
       "suggested_key": {
         "default": "Alt+W"
       },
-      "description": "连续浏览历史标签页"
+      "description": "前进"
     }
   }
 }
