@@ -2,24 +2,21 @@
 
 [中文文档](README.zh-CN.md) | English
 
-A lightweight Chrome extension for quickly switching between recently visited tabs. It keeps a short tab visit history and lets you move backward or forward through it with keyboard shortcuts.
+A lightweight Chrome extension for quickly switching to the adjacent tabs in the current Chrome window.
 
 ## Features
 
-- Quickly switch back to the previously visited tab.
-- Move forward through the tab visit history.
-- Switch across Chrome windows and focus the target window automatically.
-- Keep the latest 20 visited tabs in history.
-- Store session state with `chrome.storage.session` to handle Manifest V3 service worker suspension.
-- Show a small auto-dismissing text toast when you reach the history boundary, without blocking your current workflow.
-- Avoid treating Chrome startup/session restore activation events as user-driven tab history.
+- Switch one tab to the left with `Alt+Q`.
+- Switch one tab to the right with `Alt+W`.
+- Wrap around inside the current window: left from the first tab goes to the last tab, and right from the last tab goes to the first tab.
+- Keep the current Chrome window focused after switching.
 
 ## Shortcuts
 
 | Shortcut | Action |
 | --- | --- |
-| `Alt+Q` | Switch back to the previously visited tab |
-| `Alt+W` | Move forward to a newer visited tab |
+| `Alt+Q` | Switch to the tab on the left |
+| `Alt+W` | Switch to the tab on the right |
 
 If a shortcut conflicts with another extension or system shortcut, change it in Chrome's extension shortcuts page:
 
@@ -51,12 +48,9 @@ After changing `manifest.json` or `background.js`, reload the extension from `ch
 
 This extension uses the following permissions:
 
-- `tabs`: Read and switch browser tabs.
-- `storage`: Store the current session's tab visit history.
-- `scripting`: Inject a short text toast into the current page when the history boundary is reached.
-- `activeTab`: Allow the toast injection only after the user triggers a shortcut on the active tab.
+- `tabs`: Read the current window's tab order and switch browser tabs.
 
-The extension does not continuously access page content, and it does not collect or upload any data.
+The extension does not access page content, and it does not collect or upload any data.
 
 ## File Structure
 
@@ -70,6 +64,5 @@ chrome-quick-tab-switch/
 
 ## Notes
 
-- Chrome restricts script injection on pages such as `chrome://`, the Chrome Web Store, and some extension pages. On those pages, boundary toasts are silently skipped.
-- During browser startup/session restore, the extension briefly records only the current tab to avoid creating back history before the user manually switches tabs.
-- Closed tabs are automatically removed from the visit history.
+- Switching is based on the tab bar order in the current Chrome window.
+- Pinned tabs are included because Chrome keeps them in the same tab order.

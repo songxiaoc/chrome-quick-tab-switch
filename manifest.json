@@ -1,12 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Quick Tab Switch",
-  "description": "快速切换访问的标签页",
+  "description": "快速切换左右相邻的标签页",
   "version": "1.0",
   "permissions": [
-    "activeTab",
-    "scripting",
-    "storage",
     "tabs"
   ],
   "background": {
@@ -17,13 +14,13 @@
       "suggested_key": {
         "default": "Alt+Q"
       },
-      "description": "后退"
+      "description": "切换到左侧标签页"
     },
     "navigate-tab-history": {
       "suggested_key": {
         "default": "Alt+W"
       },
-      "description": "前进"
+      "description": "切换到右侧标签页"
     }
   }
 }
